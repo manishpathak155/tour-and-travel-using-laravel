@@ -36,6 +36,16 @@ class Booking extends Model
         return [
             'status' => BookingStatus::class,
             'payment_status' => PaymentStatus::class,
+            'adult_count' => 'integer',
+            'child_count' => 'integer',
+            'infant_count' => 'integer',
+            'base_amount' => 'integer',
+            'addon_amount' => 'integer',
+            'discount_amount' => 'integer',
+            'tax_amount' => 'integer',
+            'total_amount' => 'integer',
+            'deposit_amount' => 'integer',
+            'balance_amount' => 'integer',
             'departure_date' => 'date',
             'return_date' => 'date',
             'confirmed_at' => 'datetime',
@@ -194,7 +204,11 @@ class Booking extends Model
      */
     public function generateVoucherPDF(): string
     {
-        return '';
+        if (! class_exists(\App\Services\BookingService::class)) {
+            return '';
+        }
+
+        return app(\App\Services\BookingService::class)->generateVoucherPDF($this);
     }
 
     /**
@@ -202,6 +216,10 @@ class Booking extends Model
      */
     public function sendConfirmationEmail(): void
     {
-        // Implement via NotificationService.
+        if (! class_exists(\App\Services\NotificationService::class)) {
+            return;
+        }
+
+        app(\App\Services\NotificationService::class)->bookingConfirmed($this);
     }
 }

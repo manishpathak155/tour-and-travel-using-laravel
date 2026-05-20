@@ -26,9 +26,13 @@ class TourItinerary extends Model
     protected function casts(): array
     {
         return [
+            'day_number' => 'integer',
             'meals_included' => 'array',
             'distance_km' => 'decimal:1',
             'walking_hours' => 'decimal:1',
+            'max_altitude_meters' => 'integer',
+            'min_altitude_meters' => 'integer',
+            'sort_order' => 'integer',
         ];
     }
 

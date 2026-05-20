@@ -28,6 +28,11 @@ class TourSchedule extends Model
         return [
             'departure_date' => 'date',
             'return_date' => 'date',
+            'total_seats' => 'integer',
+            'booked_seats' => 'integer',
+            'price_override_adult' => 'integer',
+            'price_override_child' => 'integer',
+            'original_price_override' => 'integer',
             'is_guaranteed' => 'boolean',
         ];
     }

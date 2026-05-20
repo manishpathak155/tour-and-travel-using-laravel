@@ -62,6 +62,7 @@ class Tour extends Model implements HasMedia
             'what_to_bring' => 'array',
             'gear_list' => 'array',
             'languages_offered' => 'array',
+            'meta_keywords' => 'array',
             'base_price_adult' => 'integer',
             'original_price_adult' => 'integer',
             'base_price_child' => 'integer',
@@ -99,21 +100,25 @@ class Tour extends Model implements HasMedia
         $this
             ->addMediaConversion('thumb')
             ->fit(Fit::Crop, 400, 300)
+            ->quality(90)
             ->performOnCollections('thumbnail');
 
         $this
             ->addMediaConversion('medium')
             ->fit(Fit::Crop, 800, 600)
+            ->quality(90)
             ->performOnCollections('thumbnail');
 
         $this
             ->addMediaConversion('og')
             ->fit(Fit::Crop, 1200, 630)
+            ->quality(90)
             ->performOnCollections('thumbnail');
 
         $this
             ->addMediaConversion('web')
             ->fit(Fit::Crop, 1200, 800)
+            ->quality(90)
             ->performOnCollections('gallery');
     }
 

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Represents a tour category.
@@ -14,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class TourCategory extends Model
 {
     use HasFactory;
+    use HasSlug;
     use SoftDeletes;
 
     /**
@@ -30,7 +33,18 @@ class TourCategory extends Model
     {
         return [
             'is_active' => 'boolean',
+            'sort_order' => 'integer',
         ];
+    }
+
+    /**
+     * Get the slug options for the model.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
     /**

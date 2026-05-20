@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Filament\Resources\Destinations\Pages;
+
+use App\Filament\Resources\Destinations\DestinationResource;
+use Filament\Resources\Pages\CreateRecord;
+
+/**
+ * Create destination page.
+ */
+class CreateDestination extends CreateRecord
+{
+    protected static string $resource = DestinationResource::class;
+}

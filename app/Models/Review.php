@@ -28,9 +28,15 @@ class Review extends Model
     protected function casts(): array
     {
         return [
+            'overall_rating' => 'integer',
+            'guide_rating' => 'integer',
+            'accommodation_rating' => 'integer',
+            'value_rating' => 'integer',
+            'safety_rating' => 'integer',
             'is_verified' => 'boolean',
             'is_published' => 'boolean',
             'admin_responded_at' => 'datetime',
+            'helpful_count' => 'integer',
         ];
     }
 

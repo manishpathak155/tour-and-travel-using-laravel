@@ -10,6 +10,8 @@ class EditSetting extends EditRecord
 {
     protected static string $resource = SettingResource::class;
 
+    protected \Filament\Support\Enums\Width|string|null $maxContentWidth = 'full';
+
     protected function getHeaderActions(): array
     {
         return [

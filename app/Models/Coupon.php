@@ -27,8 +27,14 @@ class Coupon extends Model
     protected function casts(): array
     {
         return [
+            'discount_value' => 'decimal:2',
+            'min_booking_amount' => 'integer',
+            'max_discount_amount' => 'integer',
             'valid_from' => 'datetime',
             'valid_until' => 'datetime',
+            'max_uses' => 'integer',
+            'max_uses_per_user' => 'integer',
+            'current_uses' => 'integer',
             'applicable_tour_ids' => 'array',
             'is_active' => 'boolean',
         ];

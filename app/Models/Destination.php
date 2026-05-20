@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Represents a travel destination.
@@ -13,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Destination extends Model
 {
     use HasFactory;
+    use HasSlug;
     use SoftDeletes;
 
     /**
@@ -30,10 +33,22 @@ class Destination extends Model
         return [
             'latitude' => 'decimal:7',
             'longitude' => 'decimal:7',
+            'altitude_meters' => 'integer',
             'visa_required' => 'boolean',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
+            'sort_order' => 'integer',
         ];
+    }
+
+    /**
+     * Get the slug options for the model.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
     /**

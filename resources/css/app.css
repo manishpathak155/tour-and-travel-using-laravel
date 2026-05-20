@@ -6,6 +6,106 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-body: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --color-navy: #0D1B4B;
+    --color-orange: #F47920;
+    --color-orange-dark: #C85E10;
+}
+
+@layer base {
+    body {
+        @apply font-body text-slate-900 bg-white;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-heading text-slate-900;
+    }
+}
+
+@layer components {
+    .nav-link {
+        @apply whitespace-nowrap text-[13px] font-semibold text-slate-700 transition hover:text-orange;
+    }
+
+    .nav-cta {
+        @apply whitespace-nowrap rounded-full border border-slate-200 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.2em] text-slate-700 transition hover:border-orange hover:text-orange;
+    }
+
+    .hero-search-input {
+        @apply w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700 outline-none transition focus:border-orange;
+    }
+
+    .btn-orange {
+        @apply inline-flex items-center justify-center rounded-full bg-orange px-6 py-3 text-sm font-semibold text-white shadow-md shadow-orange/30 transition hover:-translate-y-0.5 hover:bg-orange-dark;
+    }
+
+    .btn-outline-white {
+        @apply inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-orange hover:text-orange;
+    }
+
+    .badge-chip {
+        @apply inline-flex items-center gap-2 rounded-full bg-orange/10 px-3 py-1 text-xs font-semibold text-orange;
+    }
+
+    .section-eyebrow {
+        @apply uppercase tracking-[0.35em] text-xs font-semibold text-orange;
+    }
+
+    .glass-panel {
+        @apply rounded-2xl border border-slate-200 bg-white shadow-lg shadow-black/5;
+    }
+}
+
+@layer utilities {
+    .font-body {
+        font-family: var(--font-body);
+    }
+
+    .font-heading {
+        font-family: var(--font-heading);
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .marquee-track {
+        animation: marquee 22s linear infinite;
+    }
+
+    .bg-grid {
+        background-image: radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.06) 1px, transparent 0);
+        background-size: 24px 24px;
+    }
+
+    .hero-pagination .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.8);
+        opacity: 1;
+    }
+
+    .hero-pagination .swiper-pagination-bullet-active {
+        background: #F47920;
+    }
+
+    .tour-pagination .swiper-pagination-bullet {
+        background: rgba(15, 23, 42, 0.25);
+        opacity: 1;
+    }
+
+    .tour-pagination .swiper-pagination-bullet-active {
+        background: #F47920;
+    }
 }

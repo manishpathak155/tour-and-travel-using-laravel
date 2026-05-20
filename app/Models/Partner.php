@@ -26,6 +26,7 @@ class Partner extends Model
     {
         return [
             'is_active' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 }

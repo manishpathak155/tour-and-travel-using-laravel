@@ -26,6 +26,7 @@ class AffiliateApplication extends Model
     protected function casts(): array
     {
         return [
+            'commission_rate' => 'decimal:2',
             'reviewed_at' => 'datetime',
         ];
     }

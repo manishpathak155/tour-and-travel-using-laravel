@@ -26,8 +26,11 @@ class TourRoutePoint extends Model
     protected function casts(): array
     {
         return [
+            'day_number' => 'integer',
             'latitude' => 'decimal:7',
             'longitude' => 'decimal:7',
+            'altitude_meters' => 'integer',
+            'sort_order' => 'integer',
         ];
     }
 

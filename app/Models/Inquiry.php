@@ -27,6 +27,7 @@ class Inquiry extends Model
     {
         return [
             'travel_date' => 'date',
+            'group_size' => 'integer',
             'replied_at' => 'datetime',
         ];
     }

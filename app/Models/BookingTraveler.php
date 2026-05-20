@@ -19,6 +19,19 @@ class BookingTraveler extends Model
     protected $guarded = [];
 
     /**
+     * Get the model attribute casts.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'date_of_birth' => 'date',
+            'passport_expiry' => 'date',
+        ];
+    }
+
+    /**
      * The booking relationship.
      *
      * @return BelongsTo

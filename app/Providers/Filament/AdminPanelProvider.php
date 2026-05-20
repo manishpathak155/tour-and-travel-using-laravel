@@ -24,17 +24,23 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        $brandLogo = setting('brand_logo');
+        $brandLogoDark = setting('brand_logo_dark');
+        $favicon = setting('site_favicon');
+        $primaryColor = setting('admin_primary_color', '#0D1B4B');
+
         return $panel
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Altivaro Treks')
-            ->brandLogo(asset('images/altivaro-logo.png'))
+            ->brandName(setting('site_name', 'Altivaro Treks'))
+            ->brandLogo($brandLogo ? asset('storage/' . $brandLogo) : asset('images/altivaro-logo.png'))
+            ->darkModeBrandLogo($brandLogoDark ? asset('storage/' . $brandLogoDark) : null)
             ->brandLogoHeight('2.5rem')
-            ->favicon(asset('images/favicon.ico'))
+            ->favicon($favicon ? asset('storage/' . $favicon) : asset('images/favicon.ico'))
             ->colors([
-                'primary' => Color::hex('#0D1B4B'),
+                'primary' => Color::hex($primaryColor),
             ])
             ->navigationGroups([
                 NavigationGroup::make('Tour Management')->icon('heroicon-o-map'),

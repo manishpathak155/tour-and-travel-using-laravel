@@ -26,9 +26,16 @@ class PricingRule extends Model
     protected function casts(): array
     {
         return [
+            'discount_value' => 'decimal:2',
+            'min_group_size' => 'integer',
+            'advance_booking_days' => 'integer',
+            'days_before_departure' => 'integer',
             'valid_from' => 'date',
             'valid_until' => 'date',
+            'max_uses' => 'integer',
+            'current_uses' => 'integer',
             'is_active' => 'boolean',
+            'priority' => 'integer',
         ];
     }
 

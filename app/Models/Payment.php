@@ -27,6 +27,7 @@ class Payment extends Model
     {
         return [
             'gateway_response' => 'array',
+            'amount' => 'integer',
             'paid_at' => 'datetime',
         ];
     }

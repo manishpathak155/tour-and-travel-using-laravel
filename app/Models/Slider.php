@@ -27,6 +27,7 @@ class Slider extends Model
         return [
             'overlay_opacity' => 'decimal:2',
             'is_active' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 }
